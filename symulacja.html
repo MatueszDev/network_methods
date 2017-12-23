@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projekt nr 1</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="static/projekt.css"/>
+    <script src="static/jquery-3.2.1.min.js"></script>
+    <script src="static/gl-matrix.js"></script>
+    <script src="static/webgl-utils.js"></script>
+    <script src="static/cell.js"></script>
+    <script src="static/validation.js"></script>
+</head>
+<body >
+    <div id="wrapper">
+        <header>
+            <h2>Automaty komórkowe</h2>
+        </header>
+        <nav>
+            <a href="index.html"><div class="option">Strona główna</div></a>
+            <a href="info.html"><div class="option">Wprowadzenie do automatów</div></a>
+           <a href="symulacja.html"><div class="option">Symulacje automatu</div></a>
+           <div style="clear:both"></div>
+        </nav>
+        <div id="grid">
+            Podaj wielkość siatki:<br/>
+            <input id="size" type="text"/><div id="respone"></div><br/><br/>
+            Rodzaj siatki:<br/>
+             &nbsp;&nbsp;Losowa:<input type="radio" name="type_of_network" value="1" checked="checked" onchange="add_square_size()"/><br/>
+             &nbsp;&nbsp;Kwadrat:<input type="radio" name="type_of_network" value="0" onchange="add_square_size()"/><br/><br/>
+             <div id="square"></div>
+             <script>
+                var interval;
+                var interval2;
+                function start()
+                {
+
+                  interval = setInterval(next_cell, 200);
+                  interval2 = setInterval(function(){main(network);}, 200);
+                }
+                function stop()
+                {
+                  clearInterval(interval);
+                  clearInterval(interval2);
+                }
+             </script>
+             <input type="button" onclick="check_network_size()" value="start"/>
+             <input type="button" onclick="stop()" value="stop"/>
+        </div>
+        <canvas id="glCanvas" ></canvas>
+        <div style="clear:both"></div>
+
+        <footer></footer>
+    </div>
+    <script src="static/gridHandle.js"></script>
+    <script>
+     $(function (){
+            create_cell_automat();
+            main(network);
+        });
+    </script>
+
+</body>
+</html>
