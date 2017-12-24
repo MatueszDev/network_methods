@@ -97,3 +97,15 @@ a:link,a:visited,a:active
   margin-left: 1%;
   margin-right: 1%;
 }
+
+#response
+{
+  float: left;
+  height: 30px;
+  margin-top: -12px;
+}
+#size
+{
+  display: inline-block;
+  float:left;
+}

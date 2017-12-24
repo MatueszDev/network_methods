@@ -22,8 +22,8 @@
            <div style="clear:both"></div>
         </nav>
         <div id="grid">
-            Podaj wielkość siatki:<br/>
-            <input id="size" type="text"/><div id="respone"></div><br/><br/>
+            Podaj wielkość siatki (15-100):<br/>
+            <input id="size" type="text"/><div id="response"></div><div style="clear:both"></div><br/><br/>
             Rodzaj siatki:<br/>
              &nbsp;&nbsp;Losowa:<input type="radio" name="type_of_network" value="1" checked="checked" onchange="add_square_size()"/><br/>
              &nbsp;&nbsp;Kwadrat:<input type="radio" name="type_of_network" value="0" onchange="add_square_size()"/><br/><br/>
@@ -31,17 +31,23 @@
              <script>
                 var interval;
                 var interval2;
-                function start()
+
+
+                function start(size, square, random)
                 {
 
+                  create_cell_automat(size, square, random);
+                  main(network, size);
+
                   interval = setInterval(next_cell, 200);
-                  interval2 = setInterval(function(){main(network);}, 200);
+                  interval2 = setInterval(function(){main(network,size);}, 200);
                 }
                 function stop()
                 {
                   clearInterval(interval);
                   clearInterval(interval2);
                 }
+
              </script>
              <input type="button" onclick="check_network_size()" value="start"/>
              <input type="button" onclick="stop()" value="stop"/>
@@ -55,7 +61,7 @@
     <script>
      $(function (){
             create_cell_automat();
-            main(network);
+            main(network,10);
         });
     </script>
 

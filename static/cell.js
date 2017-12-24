@@ -3,10 +3,9 @@
 var network;
 
 
-function create_cell_automat(size=50, square=10)
+function create_cell_automat(size=50, square=10, random=1)
 {
-    var size = document.getElementById("size").value || size;
-    var random = 0;
+    square /= 2;
     network = new Array(size);
     if(!random){
       for(var i=0; i < size; i++)
@@ -79,84 +78,94 @@ function next_cell()
                 let sum_of_adjacent_cells = network[size-1][j-1] + network[size-1][j] + network[size-1][j+1] +
                                     network[1][j-1] + network[1][j] + network[1][j+1] +
                                     network[0][j-1] + network[0][j+1];
-                if((sum_of_adjacent_cells === 3 || sum_of_adjacent_cells === 2) && network[i][j] ===1)
-                    temporary_network[i][j] = 1;
-                else if (sum_of_adjacent_cells === 3 && network[i][j] === 0)
-                    temporary_network[i][j] = 1;
+
+                if(sum_of_adjacent_cells === 2 && network[i][j] ===1)
+                  temporary_network[i][j] = 1;
+                else if (sum_of_adjacent_cells === 3)
+                  temporary_network[i][j] = 1;
                 else
-                    temporary_network[i][j] = 0;
+                  temporary_network[i][j] = 0;
+
             }
             else if(i === size-1 && j > 0 && (j < size -1))
             {
                 let sum_of_adjacent_cells = network[size-1][j-1] + network[size-1][j+1] +
                                 network[size-2][j-1] + network[size-2][j] + network[size-2][j+1] +
                                 network[0][j-1] + network[0][j] + network[0][j+1];
-                if((sum_of_adjacent_cells === 3 || sum_of_adjacent_cells === 2) && network[i][j] ===1)
-                    temporary_network[i][j] = 1;
-                else if (sum_of_adjacent_cells === 3 && network[i][j] === 0)
-                    temporary_network[i][j] = 1;
+
+                if(sum_of_adjacent_cells === 2 && network[i][j] ===1)
+                  temporary_network[i][j] = 1;
+                else if (sum_of_adjacent_cells === 3)
+                  temporary_network[i][j] = 1;
                 else
-                    temporary_network[i][j] = 0;
+                  temporary_network[i][j] = 0;
+
             }
             else if(i > 0 && (i < size - 1) && j === 0)
             {
                 let sum_of_adjacent_cells = network[i-1][size-1] + network[i-1][j] + network[i-1][j+1] + network[i+1][size-1] + network[i+1][j] + network[i+1][j+1] + network[i][size-1] + network[i][j+1];
-                if((sum_of_adjacent_cells === 3 || sum_of_adjacent_cells === 2) && network[i][j] ===1)
-                    temporary_network[i][j] = 1;
-                else if (sum_of_adjacent_cells === 3 && network[i][j] === 0)
-                    temporary_network[i][j] = 1;
+
+                if(sum_of_adjacent_cells === 2 && network[i][j] ===1)
+                  temporary_network[i][j] = 1;
+                else if (sum_of_adjacent_cells === 3)
+                  temporary_network[i][j] = 1;
                 else
-                    temporary_network[i][j] = 0;
+                  temporary_network[i][j] = 0;
             }
             else if(i > 0 && (i < size - 1) && j === size-1)
             {
                 let sum_of_adjacent_cells = network[i-1][j-1] + network[i-1][j] + network[i-1][0] + network[i+1][j-1] + network[i+1][j] + network[i+1][0] + network[i][j-1] + network[i][0];
-                if((sum_of_adjacent_cells === 3 || sum_of_adjacent_cells === 2) && network[i][j] ===1)
-                    temporary_network[i][j] = 1;
-                else if (sum_of_adjacent_cells === 3 && network[i][j] === 0)
-                    temporary_network[i][j] = 1;
+
+                if(sum_of_adjacent_cells === 2 && network[i][j] ===1)
+                  temporary_network[i][j] = 1;
+                else if (sum_of_adjacent_cells === 3)
+                  temporary_network[i][j] = 1;
                 else
-                    temporary_network[i][j] = 0;
+                  temporary_network[i][j] = 0;
             }
             else if(i === 0 && j === 0)
             {
                 let sum_of_adjacent_cells = network[size-1][size-1] + network[size-1][j] + network[size-1][j+1] + network[i+1][size-1] + network[i+1][j] + network[i+1][j+1] + network[i][size-1] + network[i][j+1];
-                if((sum_of_adjacent_cells === 3 || sum_of_adjacent_cells === 2) && network[i][j] ===1)
-                    temporary_network[i][j] = 1;
-                else if (sum_of_adjacent_cells === 3 && network[i][j] === 0)
-                    temporary_network[i][j] = 1;
+
+                if(sum_of_adjacent_cells === 2 && network[i][j] ===1)
+                  temporary_network[i][j] = 1;
+                else if (sum_of_adjacent_cells === 3)
+                  temporary_network[i][j] = 1;
                 else
-                    temporary_network[i][j] = 0;
+                  temporary_network[i][j] = 0;
             }
             else if(i === size-1 && j === 0)
             {
                 let sum_of_adjacent_cells = network[size-2][size-1] + network[i-1][j] + network[i-1][j+1] + network[i][size-1] + network[i][j+1] + network[j][i] + network[j][j] + network[j][j+1];
-                if((sum_of_adjacent_cells === 3 || sum_of_adjacent_cells === 2) && network[i][j] ===1)
-                    temporary_network[i][j] = 1;
-                else if (sum_of_adjacent_cells === 3 && network[i][j] === 0)
-                    temporary_network[i][j] = 1;
+
+                if(sum_of_adjacent_cells === 2 && network[i][j] ===1)
+                  temporary_network[i][j] = 1;
+                else if (sum_of_adjacent_cells === 3)
+                  temporary_network[i][j] = 1;
                 else
-                    temporary_network[i][j] = 0;
+                  temporary_network[i][j] = 0;
             }
             else if(i === 0 && j === size-1)
             {
                 let sum_of_adjacent_cells = network[j][j-1] + network[j][j] + network[j][i] + network[i][j-1] + network[i][i] + network[i+1][j-1] + network[i+1][j] + network[i+1][i];
-                if((sum_of_adjacent_cells === 3 || sum_of_adjacent_cells === 2) && network[i][j] ===1)
-                    temporary_network[i][j] = 1;
-                else if (sum_of_adjacent_cells === 3 && network[i][j] === 0)
-                    temporary_network[i][j] = 1;
+
+                if(sum_of_adjacent_cells === 2 && network[i][j] ===1)
+                  temporary_network[i][j] = 1;
+                else if (sum_of_adjacent_cells === 3)
+                  temporary_network[i][j] = 1;
                 else
-                    temporary_network[i][j] = 0;
+                  temporary_network[i][j] = 0;
             }
             else if(i === size-1 && j === size-1)
             {
                 let sum_of_adjacent_cells = network[i-1][j-1] + network[i-1][j] + network[i-1][0] + network[i][j-1] + network[i][0] + network[0][j-1] + network[0][j] + network[0][0];
-                if((sum_of_adjacent_cells === 3 || sum_of_adjacent_cells === 2) && network[i][j] ===1)
-                    temporary_network[i][j] = 1;
-                else if (sum_of_adjacent_cells === 3 && network[i][j] === 0)
-                    temporary_network[i][j] = 1;
+
+                if(sum_of_adjacent_cells === 2 && network[i][j] ===1)
+                  temporary_network[i][j] = 1;
+                else if (sum_of_adjacent_cells === 3)
+                  temporary_network[i][j] = 1;
                 else
-                    temporary_network[i][j] = 0;
+                  temporary_network[i][j] = 0;
             }
         }
     }

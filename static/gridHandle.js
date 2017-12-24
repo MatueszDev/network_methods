@@ -28,15 +28,13 @@ function createProgram(gl, vertexShader, fragmentShader) {
   gl.deleteProgram(program);
 }
 
-function main(network) {
+function main(network, network_size) {
   // Get A WebGL context
   var canvas = document.getElementById("glCanvas");
   var gl = canvas.getContext("webgl");
   if (!gl) {
     return;
   }
-
-  var network_size = document.getElementById("size").value || 50 ;
   // Get the strings for our GLSL shaders
   var vertexShaderSource = `
   // an attribute will receive data from a buffer
