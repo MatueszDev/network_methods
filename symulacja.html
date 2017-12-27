@@ -4,6 +4,7 @@
     <title>Projekt nr 1</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" type="text/css" href="static/projekt.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet">
     <script src="static/jquery-3.2.1.min.js"></script>
     <script src="static/gl-matrix.js"></script>
     <script src="static/webgl-utils.js"></script>
@@ -23,7 +24,7 @@
         </nav>
         <div id="grid">
             Podaj wielkość siatki (15-100):<br/>
-            <input id="size" type="text"/><div id="response"></div><div style="clear:both"></div><br/><br/>
+            <input id="size" type="text" placeholder="Fajna liczba"/><div id="response"></div><div style="clear:both"></div><br/><br/>
             Rodzaj siatki:<br/>
              &nbsp;&nbsp;Losowa:<input type="radio" name="type_of_network" value="1" checked="checked" onchange="add_square_size()"/><br/>
              &nbsp;&nbsp;Kwadrat:<input type="radio" name="type_of_network" value="0" onchange="add_square_size()"/><br/><br/>
@@ -35,22 +36,35 @@
 
                 function start(size, square, random)
                 {
-
-                  create_cell_automat(size, square, random);
-                  main(network, size);
+                  fit(size, square, random);
+                  document.getElementById("start").onclick = "";
 
                   interval = setInterval(next_cell, 200);
-                  interval2 = setInterval(function(){main(network,size);}, 200);
+                  interval2 = setInterval(function(){main(network);}, 200);
                 }
                 function stop()
                 {
                   clearInterval(interval);
                   clearInterval(interval2);
+                  document.getElementById("start").onclick = function(){check_network_size(1);};
                 }
 
+                function next_step()
+                {
+                  next_cell();
+                  main(network);
+                }
+
+                function fit(size, square, random)
+                {
+                  create_cell_automat(size, square, random);
+                  main(network);
+                }
              </script>
-             <input type="button" onclick="check_network_size()" value="start"/>
-             <input type="button" onclick="stop()" value="stop"/>
+             <input type="button" class="button" onclick="check_network_size(1)" value="start" id="start"/>
+             <input type="button" class="button" onclick="stop()" value="stop" />
+             <input type="button" class="button" onclick="next_step()" value="następny krok" />
+             <input type="button" class="button" onclick="check_network_size(2)" value="dostosuj" />
         </div>
         <canvas id="glCanvas" ></canvas>
         <div style="clear:both"></div>
@@ -61,7 +75,7 @@
     <script>
      $(function (){
             create_cell_automat();
-            main(network,10);
+            main(network);
         });
     </script>
 

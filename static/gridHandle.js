@@ -28,8 +28,9 @@ function createProgram(gl, vertexShader, fragmentShader) {
   gl.deleteProgram(program);
 }
 
-function main(network, network_size) {
+function main(network) {
   // Get A WebGL context
+  var network_size = network.length;
   var canvas = document.getElementById("glCanvas");
   var gl = canvas.getContext("webgl");
   if (!gl) {

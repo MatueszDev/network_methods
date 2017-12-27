@@ -3,7 +3,7 @@
 var network;
 
 
-function create_cell_automat(size=50, square=10, random=1)
+function create_cell_automat(size=25, square=10, random=1)
 {
     square /= 2;
     network = new Array(size);
@@ -13,7 +13,7 @@ function create_cell_automat(size=50, square=10, random=1)
           network[i] = new Array(size)
           for(var j = 0 ; j < size ; j++)
           {
-              if((i > size/2-square && i < size/2+square) && (j> size/2-square && j<size/2+square))
+              if((i >= size/2-square && i <= size/2+square) && (j >= size/2-square && j <= size/2+square))
                   network[i][j] = true;
               else
                   network[i][j] = false;

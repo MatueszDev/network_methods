@@ -1,6 +1,6 @@
 "use strict";
 
-function check_network_size()
+function check_network_size(kind_of_function)
 {
   var response = document.getElementById('response');
   var size_place = document.getElementById('grid');
@@ -24,7 +24,12 @@ function check_network_size()
   var radio_option = document.getElementsByName("type_of_network");
 
   if(radio_option[0].checked)
+  {
+    if(kind_of_function == 1)
       start(size, 1, 1);
+    else if (kind_of_function == 2)
+      fit(size, 1, 1);
+  }
   else {
     let square_size = parseInt(document.getElementById("square_size").value);
 
@@ -39,7 +44,11 @@ function check_network_size()
       response.innerHTML = '<p style="color:#ff3333;">&nbsp; Rozmiar boku kwadratu nie moze przekroczyć '+size+' !</p>';
       return;
     }
-    start(size, square_size, 0);
+    if(kind_of_function == 1)
+      start(size, square_size, 0);
+    else if (kind_of_function == 2)
+      fit(size, square_size, 0);
+
   }
 
 
