@@ -32,16 +32,21 @@ function check_network_size(kind_of_function)
   }
   else {
     let square_size = parseInt(document.getElementById("square_size").value);
+    var response2 = document.getElementById("response2");
+
+    response2.innerHTML = "";
 
     if(isNaN(square_size))
     {
-      response.innerHTML = '<p style="color:#ff3333;">&nbsp; Rozmiar boku kwadratu musi być liczbą!</p>';
+
+      response2.innerHTML = '<p style="color:#ff3333;">&nbsp; Rozmiar boku kwadratu musi być liczbą!</p>';
       return;
     }
 
     if(square_size > size || square_size <= 0)
     {
-      response.innerHTML = '<p style="color:#ff3333;">&nbsp; Rozmiar boku kwadratu nie moze przekroczyć '+size+' !</p>';
+
+      response2.innerHTML = '<p style="color:#ff3333;">&nbsp; Rozmiar boku kwadratu nie moze przekroczyć '+size+' !</p>';
       return;
     }
     if(kind_of_function == 1)
@@ -64,7 +69,7 @@ function add_square_size()
       additional_input.innerHTML = "";
   }else{
     var new_input = `Długość boku kwadratu:<br/>
-    <input type="text" id="square_size" /><br/><br/>`;
+    <input type="text" id="square_size" /><div id="response2"></div><br/><br/>`;
     additional_input.innerHTML = new_input;
   }
 }

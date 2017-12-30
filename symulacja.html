@@ -6,8 +6,6 @@
     <link rel="stylesheet" type="text/css" href="static/projekt.css"/>
     <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet">
     <script src="static/jquery-3.2.1.min.js"></script>
-    <script src="static/gl-matrix.js"></script>
-    <script src="static/webgl-utils.js"></script>
     <script src="static/cell.js"></script>
     <script src="static/validation.js"></script>
 </head>
@@ -39,8 +37,8 @@
                   fit(size, square, random);
                   document.getElementById("start").onclick = "";
 
-                  interval = setInterval(next_cell, 200);
-                  interval2 = setInterval(function(){main(network);}, 200);
+                  interval = setInterval(next_cell, 300);
+                  interval2 = setInterval(function(){main(network);}, 300);
                 }
                 function stop()
                 {
@@ -66,7 +64,7 @@
              <input type="button" class="button" onclick="next_step()" value="następny krok" />
              <input type="button" class="button" onclick="check_network_size(2)" value="dostosuj" />
         </div>
-        <canvas id="glCanvas" ></canvas>
+        <canvas id="glCanvas" onclick="change_state(event)"></canvas>
         <div style="clear:both"></div>
 
         <footer></footer>

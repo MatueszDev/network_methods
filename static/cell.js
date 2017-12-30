@@ -174,4 +174,29 @@ function next_cell()
         network[i] = temporary_network[i].slice();
 }
 
+function change_state(event)
+{
+  if(event.pageX)
+			{
+				var positonX = event.pageX;
+				var positonY = event.pageY;
+			}else if(event.clientX){
+				var positonX = event.cilentX;
+				var positonY = event.clientY;
+			}
+
+		var restPoint = "";
+    var canvas = $("#glCanvas");
+    var position = canvas.position();
+    var network_size = network.length;
+    var width = canvas.width() / network_size;
+    var height = canvas.height() / network_size;
+
+    var x = Math.floor((positonX - position.left)  / width);
+		var y = Math.floor((positonY - position.top-40)  / height) ;
+
+    network[x][y] = !network[x][y];
+    main(network);
+}
+
 //Conways game of life
