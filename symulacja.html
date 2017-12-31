@@ -21,6 +21,7 @@
            <div style="clear:both"></div>
         </nav>
         <div id="grid">
+            <div>
             Podaj wielkość siatki (15-100):<br/>
             <input id="size" type="text" placeholder="Fajna liczba"/><div id="response"></div><div style="clear:both"></div><br/><br/>
             Rodzaj siatki:<br/>
@@ -59,15 +60,28 @@
                   main(network);
                 }
              </script>
-             <input type="button" class="button" onclick="check_network_size(1)" value="start" id="start"/>
-             <input type="button" class="button" onclick="stop()" value="stop" />
-             <input type="button" class="button" onclick="next_step()" value="następny krok" />
-             <input type="button" class="button" onclick="check_network_size(2)" value="dostosuj" />
+           </div>
+             <div class="handle">
+               <input type="button" class="button" onclick="check_network_size(1)" value="start" id="start"/>
+               <input type="button" class="button" onclick="stop()" value="stop" />
+               <input type="button" class="button" onclick="next_step()" value="następny krok" />
+               <input type="button" class="button" onclick="check_network_size(2)" value="dostosuj" />
+               <br/><br/>
+            </div>
+             <div class="instruction">
+               <br/>
+               Krótka instrukcja:<br/>
+               <p>&nbsp; &nbsp; &nbsp;W celu przeprowadzenia symulacji wybierz rozmiar siatki a następnie przyciśnij start bądz dostosuj by zaobsewować początkowy stan.
+                 Dodatkowo można dodać własne komórki kikając na odpowiedni kwadrat. Jeśli losowy układ jest niezadowalający można stworzyć kwadrat o opwiedniej długości boku.
+               Przycisk następny krok służy do wygenerowania natępnego stanu.</p>
+           </div>
         </div>
         <canvas id="glCanvas" onclick="change_state(event)"></canvas>
         <div style="clear:both"></div>
 
-        <footer></footer>
+        <footer>
+           Copyright &copy; 2017 Mateusz Seweryn
+        </footer>
     </div>
     <script src="static/gridHandle.js"></script>
     <script>

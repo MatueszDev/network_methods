@@ -46,7 +46,7 @@ function check_network_size(kind_of_function)
     if(square_size > size || square_size <= 0)
     {
 
-      response2.innerHTML = '<p style="color:#ff3333;">&nbsp; Rozmiar boku kwadratu nie moze przekroczyć '+size+' !</p>';
+      response2.innerHTML = '<p style="color:#ff3333;">&nbsp; Rozmiar boku kwadratu nie moze przekroczyć '+size+'<br/> lub być mniejszy niż 1 !</p>';
       return;
     }
     if(kind_of_function == 1)
